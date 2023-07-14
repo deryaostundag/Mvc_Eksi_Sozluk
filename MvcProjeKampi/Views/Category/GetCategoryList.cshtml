@@ -13,8 +13,6 @@
         <th>ID</th>
         <th>Ad</th>
         <th>Durum</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
     </tr>
     @foreach(var item in Model)
             {
@@ -22,8 +20,7 @@
                     <td>@item.CategoryID</td>
                     <td>@item.CategoryName</td>
                     <td>@item.CategoryStatus</td>
-                    <td><button class="btn btn-danger">Sil</button></td>
-                    <td><button class="btn btn-primary">Güncelle</button></td>
+                   
                 </tr>
             }
 
