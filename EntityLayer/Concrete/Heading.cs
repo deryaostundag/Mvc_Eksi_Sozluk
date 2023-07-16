@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace EntityLayer.Concrete
 
         public int WriterID { get; set; }
         public virtual Writer Writer { get; set; }
+        public bool HeadingStatus { get; set; }
 
         public ICollection<Content> Contents { get; set; }
 
