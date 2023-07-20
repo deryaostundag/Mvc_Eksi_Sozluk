@@ -13,11 +13,20 @@ namespace MvcProjeKampi.Controllers
     {
         // GET: Contact
         ContactManager cm = new ContactManager(new EfContactDal());
-        ContactValidator cv=new ContactValidator();
+        ContactValidator cv = new ContactValidator();
         public ActionResult Index()
         {
             var contactValues = cm.GetList();
             return View(contactValues);
+        }
+        public ActionResult GetContactDetails(int id)
+        {
+            var contactValues = cm.GetByID(id);
+            return View(contactValues);
+        }
+        public PartialViewResult ContactPartial()
+        {
+            return PartialView();
         }
     }
 }
