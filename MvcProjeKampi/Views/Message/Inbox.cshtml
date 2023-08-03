@@ -56,7 +56,7 @@
                             </div>
                             <!-- /.btn-group -->
                             <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-                            
+
                             <!-- /.float-right -->
                         </div>
                         <div class="table-responsive mailbox-messages">
@@ -71,9 +71,18 @@
                                                     <label for="check1"></label>
                                                 </div>
                                             </td>
-                                            <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.MessageID/">@item.SenderMail</a></td>
+                                            <td class="mailbox-name"><a href="/Message/GetInboxMessageDetails/@item.MessageID/">@item.SenderMail</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@item.Subject</b> @item.MessageContent @*@item.Message.Substring(0,30) ...*@
+                                                <b>@item.Subject</b>
+                                                @if ((@item.MessageContent.Length) > 30)
+                                                {
+                                                    @item.MessageContent.Substring(0, 30);
+                                                }
+                                                else
+                                                {
+                                                    @item.MessageContent
+                                                } ...
+                                                
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">@item.MessageDate.ToShortDateString()</td>
@@ -89,7 +98,7 @@
                     <div class="card-footer p-0">
                         <div class="mailbox-controls">
                             <!-- Check all button -->
-                            
+
                             <div class="float-right">
                                 1-50/200
                                 <div class="btn-group">

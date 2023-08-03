@@ -32,8 +32,17 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message message)
         {
-
             return View();
+        }
+        public ActionResult GetInboxMessageDetails(int id)
+        {
+            var values = messageManager.GetByID(id);
+            return View(values);
+        }
+        public ActionResult GetSendboxMessageDetails(int id)
+        {
+            var values = messageManager.GetByID(id);
+            return View(values);
         }
     }
 }

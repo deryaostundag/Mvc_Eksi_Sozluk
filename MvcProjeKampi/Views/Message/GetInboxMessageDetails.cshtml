@@ -1,8 +1,9 @@
-﻿@model EntityLayer.Concrete.Contact
+﻿@model EntityLayer.Concrete.Message
 @{
-    ViewBag.Title = "GetContactDetails";
+    ViewBag.Title = "GetInboxMessageDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +13,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>İletişim Sayfası Mesajları</h1>
+                    <h1>Gelen Kutusu Mesajları</h1>
                 </div>
 
             </div>
@@ -36,10 +37,10 @@
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <div class="mailbox-read-info">
-                                <h5>Konu : @Model.Subject</h5>
+                                <h5>Konu : @Html.DisplayFor(x => x.Subject)</h5>
                                 <h6>
-                                    Mail : @Model.UserMail
-                                    <span class="mailbox-read-time float-right">Tarih</span>
+                                    Mail : @Html.DisplayFor(x=> x.SenderMail)
+                                    <span class="mailbox-read-time float-right">@(((DateTime)Model.MessageDate).ToString("dd-MMM-YYYY"))</span>
                                 </h6>
                             </div>
                             <!-- /.mailbox-read-info -->
@@ -62,8 +63,7 @@
                             </div>
                             <!-- /.mailbox-controls -->
                             <div class="mailbox-read-message">
-                                <p>@Model.Message</p>
-
+                                <p>@Model.MessageContent</p>
 
                             </div>
                             <!-- /.mailbox-read-message -->
