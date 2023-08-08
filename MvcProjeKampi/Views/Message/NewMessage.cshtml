@@ -1,4 +1,5 @@
-﻿@{
+﻿@model EntityLayer.Concrete.Message
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -40,6 +41,8 @@
                 @Html.Action("ContactPartial", "Contact")
                 <!-- /.col -->
                 <div class="col-md-9">
+                    @using (Html.BeginForm("NewMessage", "Message", FormMethod.Post))
+                    {
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">Yeni Mesaj Oluştur</h3>
@@ -47,15 +50,18 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Alıcı:">
+                                @Html.Label("Alıcı")
+                                @Html.TextBoxFor(x => x.RecieverMail, new { @class = "form-control" })
+                                <h5>@Html.ValidationMessageFor(x => x.RecieverMail, null, new { @class = "text-danger" }) </h5>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Konu:">
+                                @Html.Label("Konu")
+                                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+                                <h5>@Html.ValidationMessageFor(x => x.Subject, null, new { @class = "text-danger" }) </h5>
                             </div>
                             <div class="form-group">
-                                <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                                
-                    </textarea>
+                                @Html.Label("Mesajınız")
+                                <textarea id="compose-textarea" name="MessageContent" class="form-control" style="height: 300px"></textarea>
                             </div>
                             <div class="form-group">
                                 <div class="btn btn-default btn-file">
@@ -75,6 +81,7 @@
                         </div>
                         <!-- /.card-footer -->
                     </div>
+                    }
                     <!-- /.card -->
                 </div>
                 <!-- /.col -->
